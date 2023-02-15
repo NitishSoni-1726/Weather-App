@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  cursor: default;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: transparent;
+  color: white;
+  width: 100%;
+}
+
+.navigation img {
+  height: 90px;
+  width: 90px;
+  margin-right: 10px;
+}
+
+.navigation .title {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation h1 {
+  padding: 5px;
+  color: white;
+  border: 2px solid white;
+  text-align: center;
+}
+
+.navigation span {
+  color: red;
+}
+
+.content form {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.content .city {
+  width: 90%;
+}
+
+.content .submit {
+  width: 10%;
+}

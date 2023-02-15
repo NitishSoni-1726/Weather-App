@@ -1,0 +1,10 @@
+.location.city -- city name
+.location.country -- city country
+.current_observation.wind.speed -- wind speed
+.current_observation.wind.direction -- wind direction
+.current_observation.atmosphere.humidity -- humidity
+.current_observation.atmosphere.visibility -- visibility
+.current_observation.astronomy.sunrise -- time of sunrise
+.current_observation.astronomy.sunset -- time of sunset
+.current_observation.condition.temperature -- temperature in fahrenheit
+.current_observation.condition.text -- temperature text
