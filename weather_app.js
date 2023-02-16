@@ -16,8 +16,30 @@ const windSpeed = document.querySelector("#wind-speed");
 const humidity = document.querySelector("#humidity");
 const visibility = document.querySelector("#visibility");
 const loading = document.querySelector("#loading");
+
+//On Submit Event call searchcity function
 form.addEventListener("submit", searchcity);
 
+//Detects Current Location with the help of GeoLocation API
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function success(pos) {
+  const latitude = pos.coords.latitude;
+  const longitude = pos.coords.longitude;
+  getCurrentLocationWeather(latitude, longitude);
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+//Function searchcity
 function searchcity(event) {
   loading.classList.add("display-block");
   event.preventDefault();
@@ -26,33 +48,68 @@ function searchcity(event) {
   city.value = "";
 }
 
+// function to get weather after getting current location latitude and longitude
+async function getCurrentLocationWeather(latitude, longitude) {
+  //fetching data using API
+  const options = await fetch(
+    "https://yahoo-weather5.p.rapidapi.com/weather?lat=" +
+      latitude +
+      "&long=" +
+      longitude,
+    {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "d4479430c1msh8dd78333e4543e5p1ae3d7jsnf6e09b486059",
+        "X-RapidAPI-Host": "yahoo-weather5.p.rapidapi.com",
+      },
+    }
+  ).then((options) => options.json()); //converting it from json format to js object format
+  printing(options);
+  loading.classList.add("display-none");
+}
+
+// function to get weather opf the city searched in search box
 async function getWeather(city) {
+  //fetching data using API
   const options = await fetch(
     "https://yahoo-weather5.p.rapidapi.com/weather?location=" + city,
     {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "0c05ca972bmsh6653910830035bfp11fc4fjsn40cd7a929c7d",
+        "X-RapidAPI-Key": "786c09f3d1msh4c66591151866d2p153687jsn00533245dc04",
         "X-RapidAPI-Host": "yahoo-weather5.p.rapidapi.com",
       },
     }
-  ).then((options) => options.json());
+  ).then((options) => options.json()); //converting it from json format to js object format
   loading.classList.remove("display-block");
-  console.log(options);
+  printing(options);
+}
 
+// function to print the data to DOM
+function printing(options) {
+  // printing the city name
   cityName.innerText = options.location.city;
+  //printing the country name
   countryName.innerText = options.location.country;
+  //printing current temp converted to C
   currentTemprature.innerText = (
     (options.current_observation.condition.temperature - 32) *
     (5 / 9)
   ).toFixed(2);
+  //printing current weather condition
   currentWeatherType.innerText = options.current_observation.condition.text;
+  //printing sunrise time
   sunriseTime.innerText = options.current_observation.astronomy.sunrise;
+  // printing sunset time
   sunsetTime.innerText = options.current_observation.astronomy.sunset;
+  // printing wind speed
   windSpeed.innerText = options.current_observation.wind.speed;
+  // printing humidity
   humidity.innerText = options.current_observation.atmosphere.humidity;
+  //printing visibility
   visibility.innerText = options.current_observation.atmosphere.visibility;
 
+  // printing 10 day forecast days
   day[0].innerText = options.forecasts[0].day;
   day[1].innerText = options.forecasts[1].day;
   day[2].innerText = options.forecasts[2].day;
@@ -64,6 +121,7 @@ async function getWeather(city) {
   day[8].innerText = options.forecasts[8].day;
   day[9].innerText = options.forecasts[9].day;
 
+  // printing 10 day forecast weather conditions
   weatherCondition[0].innerText = options.forecasts[0].text;
   weatherCondition[1].innerText = options.forecasts[1].text;
   weatherCondition[2].innerText = options.forecasts[2].text;
@@ -75,6 +133,7 @@ async function getWeather(city) {
   weatherCondition[8].innerText = options.forecasts[8].text;
   weatherCondition[9].innerText = options.forecasts[9].text;
 
+  //converting F mintemp to C mintemp
   tenDayMinTemp[0].innerText = (
     (options.forecasts[0].low - 32) *
     (5 / 9)
@@ -116,6 +175,7 @@ async function getWeather(city) {
     (5 / 9)
   ).toFixed(2);
 
+  // converting F maxtemp to C maxtemp
   tenDayMaxTemp[0].innerText = (
     (options.forecasts[0].high - 32) *
     (5 / 9)
@@ -157,6 +217,7 @@ async function getWeather(city) {
     (5 / 9)
   ).toFixed(2);
 
+  //different image for different weather conditions
   for (let i = 0; i < weatherCondition.length; i++) {
     if (options.forecasts[i].text == "Haze") {
       weatherImage[i].setAttribute("src", "./Weather-Condition/haze.png");
