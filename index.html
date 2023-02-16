@@ -7,31 +7,166 @@
     <title>Weather Report</title>
     <link rel="icon" type="image/png" href="./Asset/favicon.png" />
     <link rel="stylesheet" href="weather_app.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <script src="background.js"></script>
+    <div class="loading" id="loading">
+      <div>
+        <img src="./Asset/loading.png" alt="" />
+      </div>
+      <h1>Wait Loading</h1>
+    </div>
     <div class="container">
       <div class="content">
         <nav class="navigation">
-          <div>
-            <img src="./Asset/navicon.png" />
-          </div>
           <div class="title">
             <h1>Weather<span>Forecast</span></h1>
           </div>
+          <form id="search" class="search">
+            <input
+              id="city"
+              class="city"
+              type="text"
+              placeholder="Enter City Name"
+              autofocus
+              required
+            />
+            <button id="submit" class="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
         </nav>
-        <form id="search" class="search">
-          <input
-            id="city"
-            class="city"
-            type="text"
-            placeholder="Enter City Name"
-            autofocus
-          />
-          <button id="submit" class="submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
+        <div class="data">
+          <div class="current-data">
+            <h2 class="location">
+              <span id="city-name">--</span>, <span id="country-name">--</span>
+            </h2>
+            <h1 class="temp"><span id="current-temp">--</span>°C</h1>
+            <h3><span id="day-type">--</span></h3>
+            <div class="sunrise-sunset">
+              <div class="sunrise">
+                <img src="./Asset/sunrise.png" />
+                <h2 id="sunrise-time">--</h2>
+              </div>
+              <div class="sunset">
+                <img src="./Asset/sunset.png" />
+                <h2 id="sunset-time">--</h2>
+              </div>
+            </div>
+            <div class="conditions">
+              <div class="wind-speed">
+                <h2>Wind-Speed: <span id="wind-speed">--</span> KM/H</h2>
+              </div>
+              <div class="humidity">
+                <h2>Humidity: <span id="humidity">--</span> %</h2>
+              </div>
+              <div class="visibility">
+                <h2>Visibility: <span id="visibility">--</span> KM</h2>
+              </div>
+            </div>
+          </div>
+          <div class="ten-day-forecast">
+            <h1 class="title">
+              <i class="fa fa-calendar"></i> 10-Day Forecast
+            </h1>
+            <div class="ten-day-forecast-data">
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+              <div class="day-data">
+                <h1><span id="day">--</span></h1>
+                <img id="weather-condition" />
+                <h3><span id="ten-day-type">--</span></h3>
+                <div class="ten-day-min-max">
+                  <h3>Min: <span id="ten-day-min">--</span>°C</h3>
+                  <h3>Max: <span id="ten-day-max">--</span>°C</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

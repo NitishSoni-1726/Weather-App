@@ -3,6 +3,8 @@
 }
 
 body {
+  height: 100vh;
+  width: 100%;
   cursor: default;
   margin: 0;
   padding: 0;
@@ -10,10 +12,30 @@ body {
   background-repeat: no-repeat;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
 .container {
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .content {
@@ -21,31 +43,31 @@ body {
 }
 
 .navigation {
+  padding: 10px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  background: transparent;
+  background-color: rgba(0, 0, 0, 0.606);
   color: white;
   width: 100%;
-}
-
-.navigation img {
-  height: 90px;
-  width: 90px;
-  margin-right: 10px;
 }
 
 .navigation .title {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
 }
 
 .navigation h1 {
-  padding: 5px;
+  padding: 10px;
   color: white;
   border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.527);
   text-align: center;
+  height: 50px;
 }
 
 .navigation span {
@@ -53,16 +75,240 @@ body {
 }
 
 .content form {
+  background-color: rgba(0, 0, 0, 0.671);
   height: 50px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 30%;
+  padding: 10px;
 }
 
 .content .city {
-  width: 90%;
+  font-size: 20px;
+  border: 2px solid white;
+  background: transparent;
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-right: none;
 }
 
 .content .submit {
-  width: 10%;
+  height: 30px;
+  font-size: 20px;
+  background: transparent;
+  width: 20%;
+  border: 2px solid white;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  text-transform: none;
+}
+
+.data {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.current-data {
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.485);
+  color: white;
+}
+
+.temp {
+  font-size: 50px;
+}
+
+.location {
+  font-size: 25px;
+}
+
+.sunrise-sunset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.sunrise-sunset img {
+  width: 50px;
+  height: 50px;
+}
+
+.sunrise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sunset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.conditions {
+  margin: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.minmax {
+  display: flex;
+  justify-content: center;
+}
+
+.minmax h3 {
+  margin: 10px;
+}
+
+.ten-day-forecast {
+  background-color: rgba(0, 0, 0, 0.269);
+  margin: 20px;
+  padding: 20px;
+}
+
+.ten-day-forecast-data {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.day-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.485);
+  color: white;
+  margin: 10px;
+  margin-left: 0;
+}
+
+.day-data img {
+  width: 100px;
+  height: 100px;
+}
+
+.day-data h1 {
+  width: 300px;
+  text-align: center;
+  margin: 10px;
+}
+
+.day-data h3 {
+  margin-top: 20px;
+}
+
+.ten-day-min-max {
+  display: flex;
+}
+
+.ten-day-min-max h3 {
+  margin: 15px;
+}
+
+.loading {
+  display: none;
+  height: 30%;
+  width: 50%;
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 25%;
+  background-color: rgba(0, 0, 0, 0.717);
+}
+
+.loading img {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+}
+
+.loading h1 {
+  color: white;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
+}
+
+@media only screen and (min-width: 550px) and (max-width: 750px) {
+  body {
+    font-size: 80%;
+  }
+}
+
+@media only screen and (min-width: 350px) and (max-width: 549px) {
+  body {
+    font-size: 45%;
+  }
+  nav {
+    flex-direction: column;
+  }
+
+  .container {
+    overflow-y: scroll;
+  }
+
+  .content form {
+    width: 100%;
+  }
+  .content .city {
+    width: 100%;
+  }
+  .current-data h3 {
+    font-size: 20px;
+  }
+  .sunrise-sunset {
+    width: 100%;
+  }
+  .conditions {
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+  }
+  .ten-day-forecast-data {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  .day-data h1 {
+    font-size: 25px;
+  }
+
+  .day-data h3 {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  .ten-day-min-max {
+    display: flex;
+  }
+
+  .ten-day-min-max h3 {
+    margin: 15px;
+  }
 }
