@@ -311,4 +311,13 @@ h6 {
   .ten-day-min-max h3 {
     margin: 15px;
   }
+
+  .loading {
+    left: 0;
+    width: 100%;
+    top: 35%;
+  }
+  .loading img {
+    margin-top: 60px;
+  }
 }
