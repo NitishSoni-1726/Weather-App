@@ -182,14 +182,17 @@ async function getWeather(city) {
       weatherImage[i].setAttribute("src", "./Weather-Condition/storm.png");
     } else if (options.forecasts[i].text == "Showers") {
       weatherImage[i].setAttribute("src", "./Weather-Condition/rainy.png");
-    } else if (options.forecasts[i].text == "Haze") {
-      weatherImage[i].setAttribute("src", "./Weather-Condition/haze.png");
-    } else if (options.forecasts[i].text == "Haze") {
-      weatherImage[i].setAttribute("src", "./Weather-Condition/haze.png");
-    } else if (options.forecasts[i].text == "Haze") {
-      weatherImage[i].setAttribute("src", "./Weather-Condition/haze.png");
-    } else if (options.forecasts[i].text == "Haze") {
-      weatherImage[i].setAttribute("src", "./Weather-Condition/haze.png");
+    } else if (options.forecasts[i].text == "Mostly Cloudy") {
+      weatherImage[i].setAttribute(
+        "src",
+        "./Weather-Condition/mostly-sunny.png"
+      );
+    } else if (options.forecasts[i].text == "Fair") {
+      weatherImage[i].setAttribute("src", "./Weather-Condition/sunny.png");
+    } else if (options.forecasts[i].text == "Snow") {
+      weatherImage[i].setAttribute("src", "./Weather-Condition/snowy.png");
+    } else if (options.forecasts[i].text == "Windy") {
+      weatherImage[i].setAttribute("src", "./Weather-Condition/windy.png");
     }
   }
 }
