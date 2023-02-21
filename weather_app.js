@@ -110,112 +110,30 @@ function printing(options) {
   visibility.innerText = options.current_observation.atmosphere.visibility;
 
   // printing 10 day forecast days
-  day[0].innerText = options.forecasts[0].day;
-  day[1].innerText = options.forecasts[1].day;
-  day[2].innerText = options.forecasts[2].day;
-  day[3].innerText = options.forecasts[3].day;
-  day[4].innerText = options.forecasts[4].day;
-  day[5].innerText = options.forecasts[5].day;
-  day[6].innerText = options.forecasts[6].day;
-  day[7].innerText = options.forecasts[7].day;
-  day[8].innerText = options.forecasts[8].day;
-  day[9].innerText = options.forecasts[9].day;
+  for (let i = 0; i < day.length; i++) {
+    day[i].innerText = options.forecasts[i].day;
+  }
 
   // printing 10 day forecast weather conditions
-  weatherCondition[0].innerText = options.forecasts[0].text;
-  weatherCondition[1].innerText = options.forecasts[1].text;
-  weatherCondition[2].innerText = options.forecasts[2].text;
-  weatherCondition[3].innerText = options.forecasts[3].text;
-  weatherCondition[4].innerText = options.forecasts[4].text;
-  weatherCondition[5].innerText = options.forecasts[5].text;
-  weatherCondition[6].innerText = options.forecasts[6].text;
-  weatherCondition[7].innerText = options.forecasts[7].text;
-  weatherCondition[8].innerText = options.forecasts[8].text;
-  weatherCondition[9].innerText = options.forecasts[9].text;
+  for (let i = 0; i < weatherCondition.length; i++) {
+    weatherCondition[i].innerText = options.forecasts[i].text;
+  }
 
   //converting F mintemp to C mintemp
-  tenDayMinTemp[0].innerText = (
-    (options.forecasts[0].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[1].innerText = (
-    (options.forecasts[1].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[2].innerText = (
-    (options.forecasts[2].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[3].innerText = (
-    (options.forecasts[3].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[4].innerText = (
-    (options.forecasts[4].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[5].innerText = (
-    (options.forecasts[5].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[6].innerText = (
-    (options.forecasts[6].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[7].innerText = (
-    (options.forecasts[7].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[8].innerText = (
-    (options.forecasts[8].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMinTemp[9].innerText = (
-    (options.forecasts[9].low - 32) *
-    (5 / 9)
-  ).toFixed(2);
+  for (let i = 0; i < tenDayMinTemp.length; i++) {
+    tenDayMinTemp[i].innerText = (
+      (options.forecasts[i].low - 32) *
+      (5 / 9)
+    ).toFixed(2);
+  }
 
   // converting F maxtemp to C maxtemp
-  tenDayMaxTemp[0].innerText = (
-    (options.forecasts[0].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[1].innerText = (
-    (options.forecasts[1].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[2].innerText = (
-    (options.forecasts[2].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[3].innerText = (
-    (options.forecasts[3].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[4].innerText = (
-    (options.forecasts[4].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[5].innerText = (
-    (options.forecasts[5].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[6].innerText = (
-    (options.forecasts[6].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[7].innerText = (
-    (options.forecasts[7].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[8].innerText = (
-    (options.forecasts[8].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
-  tenDayMaxTemp[9].innerText = (
-    (options.forecasts[9].high - 32) *
-    (5 / 9)
-  ).toFixed(2);
+  for (let i = 0; i < tenDayMaxTemp.length; i++) {
+    tenDayMaxTemp[i].innerText = (
+      (options.forecasts[i].high - 32) *
+      (5 / 9)
+    ).toFixed(2);
+  }
 
   //different image for different weather conditions
   for (let i = 0; i < weatherCondition.length; i++) {

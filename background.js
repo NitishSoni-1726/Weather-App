@@ -15,4 +15,6 @@ if (currentTime >= 20) {
   document.body.style.backgroundImage = "url(Asset/16-17.jpg)";
 } else if (currentTime >= 17 && currentTime < 20) {
   document.body.style.backgroundImage = "url(Asset/17-20.jpg)";
+} else {
+  document.body.style.backgroundImage = none;
 }
